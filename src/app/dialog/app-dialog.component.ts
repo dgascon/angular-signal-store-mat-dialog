@@ -6,7 +6,6 @@ import { CountStore } from "../count-store";
     selector: "app-dialog",
     templateUrl: "./app-dialog.component.html",
     imports: [MatDialogActions, MatDialogClose, MatDialogTitle],
-    providers: [CountStore]
 })
 export class DialogComponent {
     readonly dialogRef = inject(MatDialogRef<DialogComponent>);

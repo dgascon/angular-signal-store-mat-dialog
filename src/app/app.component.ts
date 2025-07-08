@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Injector } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/app-dialog.component';
 import { CountStore } from './count-store';
@@ -13,8 +13,9 @@ import { CountStore } from './count-store';
 export class AppComponent {
   dialogService = inject(MatDialog);
   countStore = inject(CountStore);
+  injector = inject(Injector);
 
   open() {
-    this.dialogService.open(DialogComponent);
+    this.dialogService.open(DialogComponent, { injector: this.injector });
   }
 }
