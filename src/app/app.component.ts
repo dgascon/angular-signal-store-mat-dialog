@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/app-dialog.component';
+import { CountStore } from './count-store';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [MatDialogModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  providers: [CountStore]
 })
 export class AppComponent {
-  title = 'angular-signal-store-mat-dialog';
+  dialogService = inject(MatDialog);
+  countStore = inject(CountStore);
+
+  open() {
+    this.dialogService.open(DialogComponent);
+  }
 }
